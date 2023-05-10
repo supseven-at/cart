@@ -286,7 +286,12 @@ class OrderUtility
 
         $orderItem->setPid($this->storagePid);
 
-        $feUserId = (int)$GLOBALS['TSFE']->fe_user->user['uid'];
+        $feUserId = null;
+
+        if ($GLOBALS['TSFE']->fe_user && !empty($GLOBALS['TSFE']->fe_user->user['uid'])) {
+            $feUserId = (int)$GLOBALS['TSFE']->fe_user->user['uid'];
+        }
+
         if ($feUserId) {
             $frontendUserRepository = GeneralUtility::makeInstance(
                 FrontendUserRepository::class
