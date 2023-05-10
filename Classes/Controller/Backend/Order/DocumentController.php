@@ -123,7 +123,7 @@ class DocumentController extends ActionController
                     'Content-Type' => 'application/pdf',
                     'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
                     'Content-Transfer-Encoding' => 'binary',
-                    'Content-Length' => $fileLen
+                    'Content-Length' => (string)$fileLen
                 ];
 
                 foreach ($headers as $header => $data) {
